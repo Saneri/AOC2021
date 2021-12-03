@@ -1,21 +1,40 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const main = (data: Array<number>): void => {
-  const increaseAmount = data.reduce(
-    (previous, current, index, arr): number => {
-      if (arr[index] > arr[index - 1]) {
-        return previous + 1;
-      }
+const solve1a = (data: Array<number>): number => {
+  const increaseAmount = data.reduce((previous, _, index, arr): number => {
+    if (arr[index] > arr[index - 1]) {
+      return previous + 1;
+    }
 
-      return previous;
-    },
-    0
-  );
+    return previous;
+  }, 0);
+  return increaseAmount;
+};
+
+const solve1b = (data: Array<number>): number => {
+  const slidingWindowSum = (arr: Array<number>, index: number): number => {
+    return arr[index - 1] + arr[index] + arr[index + 1];
+  };
+
+  const increaseAmount = data.reduce((previous, _, index, arr): number => {
+    if (
+      arr[index - 1] &&
+      arr[index + 1] &&
+      slidingWindowSum(arr, index) > slidingWindowSum(arr, index - 1)
+    ) {
+      return previous + 1;
+    }
+
+    return previous;
+  }, 0);
+  return increaseAmount;
 };
 
 const data = readFileSync(join(__dirname, 'input.txt'), 'utf8')
   .split('\n')
   .map(Number);
 
-main(data);
+console.log(`1a: ${solve1a(data)}`);
+console.log(`1b: ${solve1b(data)}`);
+console.log(solve1b([617, 618, 618, 617, 647, 716, 769, 792]));

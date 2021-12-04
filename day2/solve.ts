@@ -1,7 +1,5 @@
-import { defaultCipherList } from 'constants';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { parse } from 'path/posix';
 
 type Location = {
   depth: number;

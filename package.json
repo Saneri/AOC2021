@@ -8,7 +8,7 @@
   "author": "Santeri Suitiala",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node day1/solve.ts"
+    "start": "ts-node day2/solve.ts"
   },
   "bugs": {
     "url": "https://github.com/Saneri/AOC2021/issues"

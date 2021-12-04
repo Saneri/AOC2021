@@ -37,4 +37,3 @@ const data = readFileSync(join(__dirname, 'input.txt'), 'utf8')
 
 console.log(`1a: ${solve1a(data)}`);
 console.log(`1b: ${solve1b(data)}`);
-console.log(solve1b([617, 618, 618, 617, 647, 716, 769, 792]));
